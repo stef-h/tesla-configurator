@@ -114,12 +114,5 @@ const handlers = [
   }),
 ];
 export const worker = setupWorker(...handlers);
-worker.start({
-  onUnhandledRequest(req, print) {
-    if (req.url.indexOf( 'interstate21.com' ) !== -1) {
-      return 
-    }
+worker.start({onUnhandledRequest: 'bypass'});
 
-    print.warning()
-  }
-});
