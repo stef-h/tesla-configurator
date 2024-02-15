@@ -14,12 +14,12 @@
             </select>
         </div>
     </div>
-    <div class="row">
+    <div class="row" *ngIf="configurationService.config">
         <div class="col-sm-12">
             <ul>
-                <li>Range: <ng-container *ngIf="configurationService.config">{{configurationService.config.range}} miles</ng-container></li>
-                <li>Max speed: {{configurationService.config?.speed}}</li>
-                <li>Cost: {{configurationService.config?.price | currency : 'USD'}}</li>
+                <li>Range: {{configurationService.config.range}} miles</li>
+                <li>Max speed: {{configurationService.config.speed}}</li>
+                <li>Cost: {{configurationService.config.price | currency : 'USD'}}</li>
             </ul>
         </div>
     </div>
