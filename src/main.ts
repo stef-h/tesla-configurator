@@ -114,5 +114,5 @@ const handlers = [
   }),
 ];
 export const worker = setupWorker(...handlers);
-worker.start();
+worker.start({onUnhandledRequest: 'bypass'});
 

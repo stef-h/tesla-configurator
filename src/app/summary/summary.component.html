@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2>Step 3: Summary</h2>
+        </div>
+        <div class="col-sm-12">
+            <table>
+                <caption>Your Tesla {{ configurationService.model?.description }}</caption>
+                <thead>
+                    <tr>
+                        <th>Option</th>
+                        <th>Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ configurationService.config?.description }}</td>
+                        <td>{{ configurationService.config?.price | currency : 'USD' }}</td>
+                    </tr>
+                    <tr>
+                        <td>Range: {{ configurationService.config?.range }} miles - Max speed: {{ configurationService.config?.speed }}</td>
+                        <td></td>
+                    </tr>
+                    <tr *ngIf="(configurationService.color?.price ?? 0) > 0">
+                        <td>{{ configurationService.color?.description }}</td>
+                        <td>{{ configurationService.color?.price | currency : 'USD' }}</td>
+                    </tr>
+                    <tr *ngIf="configurationService.towHitch">
+                        <td>Tow Hitch Package</td>
+                        <td>{{ configurationService.TOW_HITCH_PRICE | currency : 'USD' }}</td>
+                    </tr>
+                    <tr *ngIf="configurationService.yoke">
+                        <td>Yoke Steering Wheel</td>
+                        <td>{{ configurationService.YOKE_PRICE | currency : 'USD' }}</td>
+                    </tr>
+                    <tr>
+                        <td><mark>TOTAL COST</mark></td>
+                        <td>{{ configurationService.totalCost | currency : 'USD' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

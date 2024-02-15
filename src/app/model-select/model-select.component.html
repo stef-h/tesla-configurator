@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2>Step 1: Choose your model and color</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <label for="modelSelect">Model:</label>
+            <select id="modelSelect" [(ngModel)]="configurationService.model" (ngModelChange)="resetToFirstColor()">
+                @for (model of models; track model.code) {
+                    <option [ngValue]="model">{{model.description}}</option>
+                }
+            </select>
+        </div>
+        <div class="col-sm-2">
+            <ng-container *ngIf="configurationService.model">
+                <label for="colorSelect">Color:</label>
+                <select id="colorSelect" [(ngModel)]="configurationService.color">
+                    @for (color of configurationService.model.colors; track color.code) {
+                        <option [ngValue]="color">{{color.description}}</option>
+                    }
+                </select>
+            </ng-container>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <img
+                *ngIf="configurationService.model && configurationService.color"
+                [ngSrc]="src"
+                width="935"
+                height="548"
+                alt="{{ configurationService.model.description + ' / ' + configurationService.color.description}}"
+            />
+        </div>
+    </div>
+</div>

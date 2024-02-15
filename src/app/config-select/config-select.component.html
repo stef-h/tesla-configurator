@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2>Step 2: Choose your config and options</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <label for="configSelect">Config:</label>
+            <select id="configSelect" [(ngModel)]="configurationService.config">
+                @for (config of option?.configs; track config.id) {
+                    <option [ngValue]="config">{{config.description}}</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <ul>
+                <li>Range: <ng-container *ngIf="configurationService.config">{{configurationService.config.range}} miles</ng-container></li>
+                <li>Max speed: {{configurationService.config?.speed}}</li>
+                <li>Cost: {{configurationService.config?.price | currency : 'USD'}}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row" *ngIf="option?.towHitch">
+        <div class="col-sm-12">
+            <label for="includeTow">Tow hitch?</label>
+            <input type="checkbox" id="includeTow" [(ngModel)]="configurationService.towHitch" />
+        </div>
+    </div>
+    <div class="row" *ngIf="option?.yoke">
+        <div class="col-sm-12">
+            <label for="includeYoke">Yoke steering wheel?</label>
+            <input type="checkbox" id="includeYoke" [(ngModel)]="configurationService.yoke" />
+        </div>
+    </div>
+</div>
