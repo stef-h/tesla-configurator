@@ -106,10 +106,6 @@ self.addEventListener('fetch', function (event) {
     return
   }
 
-  if ( event.request.url.indexOf( 'interstate21.com' ) !== -1 ) {
-    return
-  }
-
   // Generate unique request ID.
   const requestId = crypto.randomUUID()
   event.respondWith(handleRequest(event, requestId))
